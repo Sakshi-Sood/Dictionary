@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
 
 :root {
-    --primary-color: #ae9cff;
+    --primary-color: #9e8cf2;
     --secondary-color: #221c4ef1;
-    --result-color: #a6a8bd;
+    --result-color: #7c7e99;
     --white-color: #ffffff;
     --word-color: #575a7b;
 }
@@ -18,6 +18,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
+::selection {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
 body {
     background-color: var(--primary-color);
 }
@@ -30,7 +35,7 @@ body::before {
     width: 100%;
     height: 100%;
     background-color: var(--secondary-color);
-    clip-path: circle(47% at 0% 0%);
+    clip-path: circle(38% at 0% 0%);
     z-index: -1;
 }
 
@@ -42,24 +47,23 @@ body::after {
     width: 100%;
     height: 100%;
     background-color: var(--secondary-color);
-    clip-path: circle(37.5% at 100% 100%);
+    clip-path: circle(43% at 100% 100%);
     z-index: -1;
 }
 
 .header {
     text-align: center;
     margin-top: 30px;
+    color: var(--secondary-color);
 }
 
 .header h1 {
     font-size: 50px;
-    color: var(--secondary-color);
 }
 
 .header p {
     font-size: 20px;
-    color: var(--white-color);
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 .container {
@@ -69,7 +73,7 @@ body::after {
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    padding: 60px 50px;
+    padding: 50px 40px;
     border-radius: 10px;
     box-shadow: 0 20px 40px rgba(38, 33, 61, 0.2);
 }
@@ -85,8 +89,12 @@ body::after {
     width: 70%;
     border: none;
     outline: none;
-    border-bottom: 3px solid var(--primary-color);
-    font-size: 16px;
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 18px;
+}
+
+.search-box input:placeholder {
+    color: var(--word-color);
 }
 
 .search-box button {
@@ -118,13 +126,13 @@ body::after {
 
 .result h3 {
     font-size: 30px;
-    color: #1f194c;
+    color: var(--secondary-color);
 }
 
 .result .word {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 35px;
 }
 
 .result button {
@@ -163,12 +171,70 @@ body::after {
 .word-example {
     color: var(--result-color);
     font-style: italic;
-    margin-top: 30px;
+    margin-top: 20px;
     border-left: 5px solid var(--primary-color);
     padding-left: 20px;
 }
 
 .error {
-    margin-top: 80px;
+    margin-top: 50px;
     text-align: center;
+}
+
+.error-para {
+    font-size: 18px;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    body::before {
+        clip-path: circle(24% at 0% 0%);
+    }
+
+    body::after {
+        clip-path: circle(50% at 100% 100%);
+    }
+
+    .container {
+        width: 95vw;
+        padding: 20px 23px;
+    }
+
+    .header h1 {
+        font-size: 40px;
+    }
+
+    .header p {
+        font-size: 18px;
+    }
+
+    .search-box input {
+        width: 75%;
+    }
+
+    .search-box button {
+        width: 22%;
+        font-size: 15px;
+        padding: 8px 0;
+    }
+
+    .result h3 {
+        font-size: 22px;
+    }
+
+    .result button {
+        font-size: 16px;
+        padding: 4px 8px;
+    }
+
+    .result .details {
+        font-size: 14px;
+    }
+
+    .word-meaning,
+    .word-example,
+    .error-para {
+        font-size: 15px;
+    }
 }
