@@ -3,6 +3,12 @@ const result = document.getElementById("result");
 const sound = document.getElementById("sound");
 const btn = document.getElementById("search-btn");
 
+document.getElementById("inp-word").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        btn.click();
+    }
+});
+
 btn.addEventListener("click", () => {
     let inpWord = document.getElementById("inp-word").value;
     fetch(`${url}${inpWord}`)
@@ -18,7 +24,8 @@ btn.addEventListener("click", () => {
                 </div>
                 <div class="details">
                     <p> ${data[0].meanings[0].partOfSpeech} </p>
-                    <p>/${data[0].phonetic}</p>
+                    <p>${data[0].phonetic ? '/' + data[0].phonetic : ''}</p>
+
                 </div>
                 <p class="word-meaning">
                     
