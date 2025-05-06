@@ -18,8 +18,8 @@ btn.addEventListener("click", () => {
   let inpWordValue = inpWord.value;
   if (!inpWordValue.trim()) return;
 
-  // Show loader
   result.innerHTML = '<div class="loader"></div>';
+  result.style.display = "flex";
 
   (async () => {
     try {
