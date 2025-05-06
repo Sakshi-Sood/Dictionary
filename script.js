@@ -16,28 +16,33 @@ inpWord.addEventListener("keypress", (e) => {
 
 btn.addEventListener("click", () => {
   let inpWordValue = inpWord.value;
+  if (!inpWordValue.trim()) return;
+
+  // Show loader
+  result.innerHTML = '<div class="loader"></div>';
+
   (async () => {
     try {
       const res = await fetch(`${url}${inpWordValue}`);
       const data = await res.json();
       console.log(data);
       result.innerHTML = `
-        <div class="word">
-            <h3>${inpWordValue}</h3>
-            <button onClick="playSound()">
-                <i class="fa-solid fa-volume-high"></i>
-            </button>
-        </div>
-        <div class="details">
-            <p>${data[0].meanings[0].partOfSpeech}</p>
-            <p>${data[0].phonetic ? "/" + data[0].phonetic : ""}</p>
-        </div>
-        <p class="word-meaning">
-            ${data[0].meanings[0].definitions[0].definition}
-        </p>
-        <p class="word-example">
-            ${data[0].meanings[0].definitions[0].example || " "}
-        </p>`;
+                <div class="word">
+                        <h3>${inpWordValue}</h3>
+                        <button onClick="playSound()">
+                                <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                </div>
+                <div class="details">
+                        <p>${data[0].meanings[0].partOfSpeech}</p>
+                        <p>${data[0].phonetic ? "/" + data[0].phonetic : ""}</p>
+                </div>
+                <p class="word-meaning">
+                        ${data[0].meanings[0].definitions[0].definition}
+                </p>
+                <p class="word-example">
+                        ${data[0].meanings[0].definitions[0].example || " "}
+                </p>`;
 
       const phonetics = data[0].phonetics.find((p) => p.audio);
       if (phonetics && phonetics.audio) {
@@ -49,9 +54,9 @@ btn.addEventListener("click", () => {
       }
     } catch (error) {
       result.innerHTML = `
-        <h3 class="error">Sorry we couldn't find the word</h3>
-        <p class="error-para">Please check your spelling or try another word</p>
-      `;
+                <h3 class="error">Sorry we couldn't find the word</h3>
+                <p class="error-para">Please check your spelling or try another word</p>
+            `;
     }
   })();
 });
