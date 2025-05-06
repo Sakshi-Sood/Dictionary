@@ -4,6 +4,10 @@ const sound = document.getElementById("sound");
 const btn = document.getElementById("search-btn");
 const inpWord = document.getElementById("inp-word");
 
+window.onload = () => {
+  inpWord.focus();
+};
+
 inpWord.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     btn.click();
