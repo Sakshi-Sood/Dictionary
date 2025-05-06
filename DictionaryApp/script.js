@@ -32,8 +32,10 @@ btn.addEventListener("click", () => {
                     const audioSrc = phonetics.audio;
                     sound.setAttribute("src", audioSrc.startsWith("http") ? audioSrc : `https:${audioSrc}`);
                 }
-
-        });
+        })
+        .catch( () => {
+            result.innerHTML = `<h3 class="error">Couldn't find the word</h3>`;
+        })
 });
 function playSound() {
     sound.play();

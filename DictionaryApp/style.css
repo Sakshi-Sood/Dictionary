@@ -79,3 +79,8 @@ body {
     border-left: 5px solid #ae9cff;
     padding-left: 20px;
 }
+.error {
+    margin-top: 80px;
+    text-align: center;
+    
+}
