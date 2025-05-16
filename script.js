@@ -44,6 +44,8 @@ btn.addEventListener("click", () => {
                         ${data[0].meanings[0].definitions[0].example || " "}
                 </p>`;
 
+      sound.setAttribute("src", "");
+
       const phonetics = data[0].phonetics.find((p) => p.audio);
       if (phonetics && phonetics.audio) {
         const audioSrc = phonetics.audio;
@@ -51,6 +53,8 @@ btn.addEventListener("click", () => {
           "src",
           audioSrc.startsWith("http") ? audioSrc : `https:${audioSrc}`
         );
+      } else {
+        sound.setAttribute("src", "");
       }
     } catch (error) {
       result.innerHTML = `
