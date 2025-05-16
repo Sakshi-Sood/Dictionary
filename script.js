@@ -66,5 +66,7 @@ btn.addEventListener("click", () => {
 });
 
 const playSound = () => {
-  sound.play();
+  if (sound.getAttribute("src")) {
+    sound.play();
+  }
 };
